@@ -12,12 +12,14 @@ class Profile extends Model
 
     protected $fillable = [
         'first_name',
+        'tussenvoegsel',
         'last_name',
         'bsn',
         'address',
         'city',
         'date_of_birth',
         'place_of_birth',
+        'delict',
     ];
     
     public $timestamps = false;

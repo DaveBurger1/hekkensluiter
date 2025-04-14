@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Group;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,7 +20,12 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        if (!auth()->check() || !auth()->user()->hasGroup('director')) {
+            abort(403, 'Unauthorized action.');
+        }
+        
+        $groups = Group::all();
+        return view('auth.register', ['groups' => $groups]);
     }
 
     /**
@@ -33,6 +39,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'group_id' => ['required', 'exists:groups,id']
         ]);
 
         $user = User::create([
@@ -40,6 +47,10 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        // Assign the selected group to the user
+        $group = Group::find($request->group_id);
+        $user->groups()->attach($group);
 
         event(new Registered($user));
 

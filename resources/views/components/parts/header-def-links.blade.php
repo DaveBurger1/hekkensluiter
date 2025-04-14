@@ -1,10 +1,21 @@
-<form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                {{ __('Log Out') }}
+<div class="flex space-x-4"> 
+    <a href="{{ route('cells.status') }}" class="px-4 py-2 bg-white text-[#5D3621] rounded-md font-medium hover:bg-gray-100 transition">
+        Cell Status
+    </a>
+    @auth
+        @unless(request()->is('/'))
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="px-4 py-2 bg-white text-[#5D3621] rounded-md font-medium hover:bg-gray-100 transition">
+                    {{ __('Log out') }}
+                </button>
+            </form>
+        @endunless
+    @else
+        @if(request()->is('/'))
+            <button onclick="window.location.href='/login'" class="px-4 py-2 bg-white text-[#5D3621] rounded-md font-medium hover:bg-gray-100 transition">
+            {{ __('Log in') }}
             </button>
-        </form>
-
-
-<a>Link 5</a>
+        @endif
+    @endauth
+</div>

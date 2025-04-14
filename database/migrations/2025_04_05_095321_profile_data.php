@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('first_name', 50);
+            $table->string('tussenvoegsel', 50)->nullable();
             $table->string('last_name', 50);
             $table->string('bsn', 9);
             $table->string('address', 50)->nullable();
@@ -19,6 +20,8 @@ return new class extends Migration
 
             $table->date('date_of_birth');
             $table->string('place_of_birth');
+            $table->string('delict');
+            $table->unique(['first_name', 'last_name', 'date_of_birth']);
         });
 
         Schema::table('users', function (Blueprint $table) {
