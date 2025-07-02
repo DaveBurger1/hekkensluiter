@@ -20,7 +20,10 @@ class Profile extends Model
         'date_of_birth',
         'place_of_birth',
         'delict',
+<<<<<<< HEAD
         'photo',
+=======
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
     ];
     
     public $timestamps = false;

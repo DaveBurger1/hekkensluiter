@@ -11,6 +11,7 @@
             </div>
 
             <div id="info" class="tab-content" style="display: block;">
+<<<<<<< HEAD
                 <div style="position: relative;">
                     <div class="prisoner-image" style="position: absolute; top: 30px; right: 0; max-width: 200px; margin: 0;">
                         @php
@@ -27,10 +28,23 @@
                             <th>Waarde</th>
                         </tr>
                     </x-slot>
+=======
+                <div class="prisoner-image">
+                    @php
+                        $photoPath = 'resources/icons/app/Afbeelding' . ($prisoner->id % 2 + 1) . '.png';
+                    @endphp
+                    <img src="{{ Vite::asset($photoPath) }}" 
+                         alt="Prisoner Image" 
+                         style="max-width: 200px; margin-bottom: 20px; right: 20px; position:absolute; top: 150px;">
+                </div>
+                <x-viewtable>
+                <x-slot name="head">
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
                     <tr>
                         <td>Voornaam</td>
                         <td>{{ $profile?->first_name ?? 'Niet beschikbaar' }}</td>
                     </tr>
+<<<<<<< HEAD
                     <tr>
                         <td>Tussenvoegsel</td>
                         <td>{{ $profile?->tussenvoegsel }}</td>
@@ -70,6 +84,51 @@
                     </tr>
                     </x-viewtable>
                 </div>
+=======
+                </x-slot>
+                <tr>
+                    <td>Voornaam</td>
+                    <td>{{ $profile?->first_name ?? 'Niet beschikbaar' }}</td>
+                </tr>
+                <tr>
+                    <td>Tussenvoegsel</td>
+                    <td>{{ $profile?->tussenvoegsel }}</td>
+                </tr>
+                <tr>
+                    <td>Achternaam</td>
+                    <td>{{ $profile?->last_name ?? 'Niet beschikbaar' }}</td>
+                </tr>
+                <tr>
+                    <td>Cel</td>
+                    <td>{{ $prisoner->currentCell ? $prisoner->currentCell->wing.$prisoner->currentCell->cell_number : 'Niet toegewezen' }}</td>
+                </tr>
+                <tr>
+                    <td>BSN-nummer</td>
+                    <td>{{ $profile?->bsn ?? 'Niet beschikbaar' }}</td>
+                </tr>
+                <tr>
+                    <td>Adres</td>
+                    <td>{{ $profile ? ($profile->address . ', ' . $profile->city) : 'Niet beschikbaar' }}</td>
+                </tr>
+                <tr>
+                    <td>Geboortedatum</td>
+                    <td>{{ $profile?->date_of_birth ? \Carbon\Carbon::parse($profile->date_of_birth)->format('d/m/Y') : 'Niet beschikbaar' }}</td>
+                </tr>
+                <tr>
+                    <td>Geboorteplaats</td>
+                    <td>{{ $profile?->place_of_birth ?? 'Niet beschikbaar' }}</td>
+                </tr>
+                <tr>
+                    <td>Delict</td>
+                    <td>{{ $profile?->delict ?? 'Niet beschikbaar' }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="{{ route('prisoners.edit', $prisoner->id) }}">Bewerken</a>
+                    </td>
+                </tr>
+                </x-viewtable>
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
             </div>
 
             <div id="actions" class="tab-content" style="display: none;">
@@ -102,12 +161,15 @@
                         @csrf
                         <input type="hidden" name="prisoner_id" value="{{ $prisoner->id }}">
                         <div style="display: flex; gap: 10px;">
+<<<<<<< HEAD
                             <select name="user_id" required style="flex: 1;">
                                 <option value="">Selecteer gebruiker</option>
                                 @foreach($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->profile->first_name ?? $user->name }}</option>
                                 @endforeach
                             </select>
+=======
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
                             <select name="action_id" required style="flex: 1;">
                                 @foreach(App\Models\Action::all() as $action)
                                     <option value="{{ $action->id }}">{{ $action->name }}</option>
@@ -138,6 +200,7 @@
                     </x-slot>
                     @foreach ($logs as $log)
                         <tr>
+<<<<<<< HEAD
                             <td>
                                 @if($log->user)
                                     {{ $log->user->profile->first_name ?? $log->user->name ?? 'Onbekend' }}
@@ -148,6 +211,12 @@
                             <td>{{ $log->action->name_past }}</td>
                             <td>{{ $log->change ?? '' }}</td>
                             <td>{{ $log->created_at ? \Carbon\Carbon::parse($log->created_at)->format('d-m-Y H:i') : 'Onbekend' }}</td>
+=======
+                            <td>{{ $log->user->profile->first_name }}</td>
+                            <td>{{ $log->action->name_past }}</td>
+                            <td>{{ $log->change ?? '' }}</td>
+                            <td>{{ $log->created_at ? $log->created_at->format('d-m-Y H:i') : 'Onbekend' }}</td>
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
                         </tr>
                     @endforeach
                 </x-viewtable>

@@ -23,6 +23,7 @@ use App\Http\Middleware\CheckRole;
 
 Route::prefix('app')->group(function () {
     Route::redirect('/', '/app/prisoners');
+<<<<<<< HEAD
 
     // Manually define prisoner resource routes to apply middleware on create and store
     Route::get('prisoners', [PrisonerController::class, 'index'])->name('prisoners.index');
@@ -37,6 +38,9 @@ Route::prefix('app')->group(function () {
     Route::put('prisoners/{prisoner}', [PrisonerController::class, 'update'])->name('prisoners.update');
     Route::delete('prisoners/{prisoner}', [PrisonerController::class, 'destroy'])->name('prisoners.destroy');
 
+=======
+    Route::resource('prisoners', PrisonerController::class);
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
     Route::post('/prisoners/{prisoner}/move-cell', [PrisonerController::class, 'moveCell'])
         ->name('prisoners.move-cell');
     Route::resource('logs', ActionLogController::class);

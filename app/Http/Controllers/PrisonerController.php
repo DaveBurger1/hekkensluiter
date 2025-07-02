@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
+=======
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
 use App\Models\ActionLog;
 use App\Models\Action;
 use App\Models\Prisoner;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\CellOccupation; // Import CellOccupation model
+<<<<<<< HEAD
 class PrisonerController extends Controller
 {
     public function __construct()
@@ -17,6 +21,11 @@ class PrisonerController extends Controller
         $this->middleware(\App\Http\Middleware\CheckRole::class . ':prisoner_make')->only(['create', 'store']);
     }
 
+=======
+
+class PrisonerController extends Controller
+{
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
     public function cellStatus()
     {
         $cells = CellOccupation::with(['prisoner.profile'])
@@ -99,7 +108,11 @@ class PrisonerController extends Controller
             return back()->withErrors(['date_of_birth' => 'Ongeldige datum. Gebruik formaat DD/MM/YYYY']);
         }
 
+<<<<<<< HEAD
         // Validate profile data including photo
+=======
+        // Validate profile data
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
         $validated = $request->validate([
             'first_name' => 'required|string|max:50',
             'tussenvoegsel' => 'nullable|string|max:50',
@@ -111,8 +124,12 @@ class PrisonerController extends Controller
             'city' => 'nullable|string|max:50',
             'date_of_birth' => 'required|date',
             'place_of_birth' => 'required|string',
+<<<<<<< HEAD
             'delict' => 'required|string|max:30',
             'photo' => 'nullable|image|max:2048' // max 2MB
+=======
+            'delict' => 'required|string|max:30'
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
         ]);
 
         if ($request->id) {
@@ -120,6 +137,7 @@ class PrisonerController extends Controller
             $prisoner = Prisoner::find($request->id);
             $prisoner->profile->update($validated);
         } else {
+<<<<<<< HEAD
             try {
                 DB::beginTransaction();
 
@@ -152,6 +170,26 @@ class PrisonerController extends Controller
             } catch (\Exception $e) {
                 DB::rollBack();
                 return back()->withErrors(['error' => 'Er is een fout opgetreden bij het opslaan van de gevangene.']);
+=======
+            // Create new profile
+            $profile = Profile::create($validated);
+            
+            // Create new prisoner linked to profile
+            $prisoner = Prisoner::create([
+                'profile_id' => $profile->id
+            ]);
+
+            try {
+                // Assign cell
+                $prisoner->assignCell($request->wing, $request->cell_number);
+            } catch (\InvalidArgumentException $e) {
+                return back()->withErrors(['cell_number' => $e->getMessage()]);
+            }
+
+            // Add new case if specified
+            if ($request->new_case_id && $request->new_case_reason) {
+                $prisoner->cases()->attach($request->new_case_id, ['reason' => $request->new_case_reason]);
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
             }
         }
 
@@ -166,17 +204,24 @@ class PrisonerController extends Controller
             ->where('prisoner_id', $prisoner->id)
             ->orderBy('created_at', 'desc')
             ->get();
+<<<<<<< HEAD
 
         // Get users with groups director or coordinator
         $users = \App\Models\User::whereHas('groups', function ($query) {
             $query->whereIn('name', ['director', 'coordinator']);
         })->with('profile')->get();
+=======
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
             
         return view('app.prisoners.show', [
             'profile' => $prisoner->profile,
             'prisoner' => $prisoner,
+<<<<<<< HEAD
             'logs' => $logs,
             'users' => $users
+=======
+            'logs' => $logs
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
         ]);
     }
 

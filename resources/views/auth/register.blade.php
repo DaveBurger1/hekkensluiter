@@ -40,11 +40,19 @@
         </div>
 
         <!-- Role Selection -->
+<<<<<<< HEAD
         <div class="mt-4" style="display:none;">
             <x-input-label for="group_id" :value="__('Role')" />
             <select id="group_id" name="group_id" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required>
                 @foreach($groups as $group)
                     <option value="{{ $group->id }}" selected>{{ $group->display_name }}</option>
+=======
+        <div class="mt-4">
+            <x-input-label for="group_id" :value="__('Role')" />
+            <select id="group_id" name="group_id" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required>
+                @foreach($groups as $group)
+                    <option value="{{ $group->id }}">{{ $group->display_name }}</option>
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
                 @endforeach
             </select>
             <x-input-error :messages="$errors->get('group_id')" class="mt-2" />
