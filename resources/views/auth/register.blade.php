@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ $formAction ?? route('register') }}">
         @csrf
 
         <!-- Name -->
@@ -37,6 +37,17 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <!-- Role Selection -->
+        <div class="mt-4" style="display:none;">
+            <x-input-label for="group_id" :value="__('Role')" />
+            <select id="group_id" name="group_id" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required>
+                @foreach($groups as $group)
+                    <option value="{{ $group->id }}" selected>{{ $group->display_name }}</option>
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('group_id')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">

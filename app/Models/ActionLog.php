@@ -10,9 +10,20 @@ class ActionLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'user_id',
+        'action_id',
+        'prisoner_id',
+        'change',
+        'created_at'
+    ];
 
     public $timestamps = false;
+
+    public function prisoner(): BelongsTo
+    {
+        return $this->belongsTo(Prisoner::class);
+    }
 
     public function user(): BelongsTo
     {
