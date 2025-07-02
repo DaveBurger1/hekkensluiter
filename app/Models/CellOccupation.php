@@ -12,7 +12,9 @@ class CellOccupation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'cell',
+        'wing',
+        'cell_number', 
+        'prisoner_id',
         'start_time',
         'end_time',
     ];
@@ -28,6 +30,11 @@ class CellOccupation extends Model
     public function case(): HasOneThrough
     {
         return $this->hasOneThrough(CaseModel::class, CasePrisoner::class, 'case_id');
+    }
+
+    public function prisoner(): BelongsTo
+    {
+        return $this->belongsTo(Prisoner::class);
     }
 
     public function case_prisoner(): BelongsTo

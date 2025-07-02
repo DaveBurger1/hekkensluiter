@@ -11,11 +11,13 @@ return new class extends Migration
 
         Schema::create('cell_occupations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('cell');
-            $table->unsignedBigInteger('location_id');
-            $table->foreign('location_id')->references('id')->on('locations');
+            $table->string('wing', 1)->nullable()->default(null); // A, B or C
+            $table->string('cell_number', 4)->nullable()->default(null); // e.g. A100, B200, C363
+            $table->unsignedBigInteger('prisoner_id')->nullable();
+            $table->foreign('prisoner_id')->references('id')->on('prisoners')->onDelete('cascade');
             $table->dateTime('start_time');
             $table->dateTime('end_time')->nullable();
+            $table->unique(['wing', 'cell_number', 'end_time']); // Prevent double bookings
         });
     }
 

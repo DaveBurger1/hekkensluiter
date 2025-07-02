@@ -11,7 +11,11 @@ class Action extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'key',
+        'name',
+        'name_past'
+    ];
 
     public $timestamps = false;
 
