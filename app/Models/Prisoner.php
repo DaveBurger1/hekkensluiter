@@ -53,6 +53,10 @@ class Prisoner extends Model
                 throw new \InvalidArgumentException('Invalid wing or cell number');
             }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
             // Validate cell number range per wing
             $cellNumInt = (int) ltrim($cellNumber, '0'); // Convert to int, remove leading zeros
             $wingRanges = [
@@ -78,6 +82,11 @@ class Prisoner extends Model
                 throw new \InvalidArgumentException("Cell number {$cellNumber} is out of allowed range for wing {$wing}");
             }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
             // Release any current cell assignment
             if ($current = $this->current_cell) {
                 logger()->info('Ending current cell assignment', $current->toArray());

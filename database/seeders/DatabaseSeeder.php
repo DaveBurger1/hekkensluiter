@@ -21,13 +21,29 @@ class DatabaseSeeder extends Seeder
         // Create test users for each role
         $users = [
             [
+<<<<<<< HEAD
                 'name' => 'Directeur',
+=======
+<<<<<<< HEAD
+                'name' => 'Directeur',
+=======
+                'name' => 'Directeur Test',
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                 'email' => 'directeur@example.com',
                 'password' => bcrypt('password'),
                 'group' => 'director',
             ],
             [
+<<<<<<< HEAD
                 'name' => 'Coordinator',
+=======
+<<<<<<< HEAD
+                'name' => 'Coordinator',
+=======
+                'name' => 'Coordinator Test',
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                 'email' => 'coordinator@example.com',
                 'password' => bcrypt('password'),
                 'group' => 'coordinator',

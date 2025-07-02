@@ -5,7 +5,15 @@
             @include('components.parts.sidebar-items')
         </x-sidebar>
         <x-main>
+<<<<<<< HEAD
             <form action="{{ route('prisoners.store') }}" method="post" enctype="multipart/form-data">
+=======
+<<<<<<< HEAD
+            <form action="{{ route('prisoners.store') }}" method="post" enctype="multipart/form-data">
+=======
+            <form action="{{ route('prisoners.store') }}" method="post">
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                 @csrf
                 <x-viewtable>
                     <x-slot name="head">
@@ -15,10 +23,19 @@
                         </tr>
                     </x-slot>
                     <tr>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                         <td>Foto</td>
                         <td><input type="file" name="photo" accept="image/*"></td>
                     </tr>
                     <tr>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                         <td>Voornaam</td>
                         <td><input type="text" name="first_name" required></td>
                     </tr>

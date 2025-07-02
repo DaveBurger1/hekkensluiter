@@ -24,14 +24,33 @@ class ActionLogController extends Controller
     public function store(Request $request)
     {
         $user = $request->user();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
 
         $validated = $request->validate([
             'prisoner_id' => 'required|exists:prisoners,id',
             'user_id' => 'required|exists:users,id',
+<<<<<<< HEAD
+=======
+=======
+        if (!$user) {
+            return back()->withErrors(['user' => 'User must be logged in to log actions.']);
+        }
+
+        $validated = $request->validate([
+            'prisoner_id' => 'required|exists:prisoners,id',
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
             'action_id' => 'required|exists:actions,id',
             'change' => 'nullable|string'
         ]);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
         // Use user_id from form or fallback to authenticated user
         $userId = $validated['user_id'] ?? ($user ? $user->id : null);
         if (!$userId) {
@@ -40,6 +59,13 @@ class ActionLogController extends Controller
 
         $log = ActionLog::create([
             'user_id' => $userId,
+<<<<<<< HEAD
+=======
+=======
+        $log = ActionLog::create([
+            'user_id' => $user->id,
+>>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
             'prisoner_id' => $validated['prisoner_id'],
             'action_id' => $validated['action_id'],
             'change' => $validated['change'],
