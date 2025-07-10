@@ -43,6 +43,9 @@ class User extends Authenticatable
 
     /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
      * Check if the user has the given permission.
      */
     public function hasPermission(string $permission): bool
@@ -64,8 +67,11 @@ class User extends Authenticatable
     }
 
     /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
      * The attributes that should be hidden for serialization.
      *
      * @var list<string>

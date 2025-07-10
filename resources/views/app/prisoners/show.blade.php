@@ -12,6 +12,9 @@
 
             <div id="info" class="tab-content" style="display: block;">
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                 <div style="position: relative;">
                     <div class="prisoner-image" style="position: absolute; top: 30px; right: 0; max-width: 200px; margin: 0;">
                         @php
@@ -28,6 +31,8 @@
                             <th>Waarde</th>
                         </tr>
                     </x-slot>
+<<<<<<< HEAD
+=======
 =======
                 <div class="prisoner-image">
                     @php
@@ -40,11 +45,15 @@
                 <x-viewtable>
                 <x-slot name="head">
 >>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                     <tr>
                         <td>Voornaam</td>
                         <td>{{ $profile?->first_name ?? 'Niet beschikbaar' }}</td>
                     </tr>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                     <tr>
                         <td>Tussenvoegsel</td>
                         <td>{{ $profile?->tussenvoegsel }}</td>
@@ -84,6 +93,8 @@
                     </tr>
                     </x-viewtable>
                 </div>
+<<<<<<< HEAD
+=======
 =======
                 </x-slot>
                 <tr>
@@ -129,6 +140,7 @@
                 </tr>
                 </x-viewtable>
 >>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
             </div>
 
             <div id="actions" class="tab-content" style="display: none;">
@@ -162,14 +174,20 @@
                         <input type="hidden" name="prisoner_id" value="{{ $prisoner->id }}">
                         <div style="display: flex; gap: 10px;">
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                             <select name="user_id" required style="flex: 1;">
                                 <option value="">Selecteer gebruiker</option>
                                 @foreach($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->profile->first_name ?? $user->name }}</option>
                                 @endforeach
                             </select>
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                             <select name="action_id" required style="flex: 1;">
                                 @foreach(App\Models\Action::all() as $action)
                                     <option value="{{ $action->id }}">{{ $action->name }}</option>
@@ -201,6 +219,9 @@
                     @foreach ($logs as $log)
                         <tr>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                             <td>
                                 @if($log->user)
                                     {{ $log->user->profile->first_name ?? $log->user->name ?? 'Onbekend' }}
@@ -211,12 +232,15 @@
                             <td>{{ $log->action->name_past }}</td>
                             <td>{{ $log->change ?? '' }}</td>
                             <td>{{ $log->created_at ? \Carbon\Carbon::parse($log->created_at)->format('d-m-Y H:i') : 'Onbekend' }}</td>
+<<<<<<< HEAD
+=======
 =======
                             <td>{{ $log->user->profile->first_name }}</td>
                             <td>{{ $log->action->name_past }}</td>
                             <td>{{ $log->change ?? '' }}</td>
                             <td>{{ $log->created_at ? $log->created_at->format('d-m-Y H:i') : 'Onbekend' }}</td>
 >>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
                         </tr>
                     @endforeach
                 </x-viewtable>

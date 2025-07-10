@@ -23,7 +23,11 @@ class Profile extends Model
 <<<<<<< HEAD
         'photo',
 =======
+<<<<<<< HEAD
+        'photo',
+=======
 >>>>>>> c827a1adedba7fb1a66272d44689c45e15fb8fe1
+>>>>>>> a9619c76d7468250b94d107373c043f5ce25d05c
     ];
     
     public $timestamps = false;
