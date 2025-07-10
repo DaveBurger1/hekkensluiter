@@ -1,0 +1,28 @@
+body,
+button,
+input,
+select,
+label,
+textarea
+{
+    font-family: var(--font-body);
+    font-size: var(--font-size-normal);
+    font-weight: var(--font-weight-normal);
+    color: var(--col-text);
+}
+
+input
+{
+    color: var(--col-text-data);
+}
+
+a
+{
+    text-decoration: underline;
+    color: var(--col-text);
+}
+
+a:hover
+{
+    opacity: 70%;
+}
